@@ -10,6 +10,26 @@
       "pages": 472,
       "description": "JavaScript lies at the heart of almost every modern web application, from social apps to the newest browser-based games. Though simple for beginners to pick up and play with, JavaScript is a flexible, complex language that you can use to build full-scale applications.",
       "website": "http://eloquentjavascript.net/"
+    }, {
+      "isbn": "9781593275886",
+      "title": "Eloquent JavaScript, Second Edition",
+      "subtitle": "A Modern Introduction to Programming",
+      "author": "Marijn Haverbeke",
+      "published": "2014-12-14T00:00:00.000Z",
+      "publisher": "No Starch Press",
+      "pages": 472,
+      "description": "JavaScript lies at the heart of almost every modern web application, from social apps to the newest browser-based games. Though simple for beginners to pick up and play with, JavaScript is a flexible, complex language that you can use to build full-scale applications.",
+      "website": "http://eloquentjavascript.net/"
+    }, {
+      "isbn": "978159327543436",
+      "title": "Eloquent JavaScript, Second Edition",
+      "subtitle": "A Modern Introduction to Programming",
+      "author": "Marijn Haverbeke",
+      "published": "2014-12-14T00:00:00.000Z",
+      "publisher": "No Starch Press",
+      "pages": 472,
+      "description": "JavaScript lies at the heart of almost every modern web application, from social apps to the newest browser-based games. Though simple for beginners to pick up and play with, JavaScript is a flexible, complex language that you can use to build full-scale applications.",
+      "website": "http://eloquentjavascript.net/"
     },
     {
       "isbn": "9781449331818",
@@ -63,7 +83,7 @@
       "published": "2015-12-27T00:00:00.000Z",
       "publisher": "O'Reilly Media",
       "pages": 278,
-      "description": "No matter how much experience you have with JavaScript, odds are you don’t fully understand the language. As part of the "You Don’t Know JS" series, this compact guide focuses on new features available in ECMAScript 6 (ES6), the latest version of the standard upon which JavaScript is built.",
+      "description": "No matter how much experience you have with JavaScript, odds are you don’t fully understand the language. As part of the You Dont Know JS series, this compact guide focuses on new features available in ECMAScript 6 (ES6), the latest version of the standard upon which JavaScript is built.",
       "website": "https://github.com/getify/You-Dont-Know-JS/tree/master/es6%20&%20beyond"
     },
     {
