@@ -11,11 +11,11 @@ import { EMPTY_STRING } from '../common/constants';
 * @param input the input data
 * @param meta the meta data
 */
-const SearchField = ({ input, meta }) => (
+const SearchField = ({ input, meta, label }) => (
   // eslint-disable-next-line react/jsx-filename-extension
   <>
     <FormControl fullWidth variant="outlined">
-      <InputLabel htmlFor="outlined-adornment-amount">Search</InputLabel>
+      <InputLabel htmlFor="outlined-adornment-amount">{label}</InputLabel>
       <OutlinedInput
         error={meta.touched && meta.error}
         id="outlined-adornment-amount"
@@ -25,7 +25,7 @@ const SearchField = ({ input, meta }) => (
       />
     </FormControl>
     {meta.touched && meta.error
-      ? <Typography color="secondary">{meta.error}</Typography> : null}
+      ? <Typography variant="caption" display="block" gutterBottom color="secondary">{meta.error}</Typography> : null}
   </>
 );
 
@@ -35,6 +35,7 @@ SearchField.defaultProps = {
 SearchField.propTypes = {
   input: PropTypes.shape().isRequired,
   meta: PropTypes.shape(),
+  label: PropTypes.string.isRequired,
 };
 
 export default SearchField;

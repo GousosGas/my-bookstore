@@ -1,0 +1,15 @@
+.LoaderContainer {
+  position: absolute;
+  z-index: 99999999999999;
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
+  background: linear-gradient(90deg, rgba(0,0,0,0.5161414907759979) 100%,
+          rgba(0,0,0,0.37608546836703427) 100%,
+          rgba(13,13,13,0.49653364763874297) 100%);
+}
+
+.LoaderCenter{
+  position: relative;
+  top:50%;
+}

@@ -1,14 +1,16 @@
 import React from 'react';
-import PersonIcon from '@material-ui/icons/Person';
 import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
-import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types';
+import Divider from '@material-ui/core/Divider';
+import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
+import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
+import FileCopyOutlinedIcon from '@material-ui/icons/FileCopyOutlined';
+import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined';
 import styles from './BookImageContainer.module.scss';
-import { EMPTY_STRING } from '../../core/common/constants';
+import { EMPTY_ARRAY, EMPTY_OBJECT, EMPTY_STRING } from '../../core/common/constants';
 
 /**
  * Component responsible to render
@@ -20,41 +22,89 @@ import { EMPTY_STRING } from '../../core/common/constants';
  * @returns {*}
  * @constructor
  */
-const BookImageContainer = ({ title, description, subtitle }) => (
-  <Card className={styles.Root}>
-    <CardHeader
-      avatar={(
-        <Avatar aria-label="recipe">
-          <PersonIcon />
-        </Avatar>
-                  )}
-      title={title}
-      subheader={subtitle}
-    />
-    <CardMedia
-      className={styles.Media}
-      image="https://via.placeholder.com/150x300"
-      title="Paella dish"
-      style={{ height: '90px' }}
-    />
-    <CardContent>
-      <Typography variant="body2" color="textSecondary" component="p">
-        {description}
-      </Typography>
-    </CardContent>
-  </Card>
+const BookImageContainer = ({
+  publishedDate, publisher, pageCount, image, authors,
+}) => (
+  <>
+    <Card className={styles.CardImageClass}>
+      <CardMedia
+        className={styles.MediaClass}
+        image={image.small}
+      />
+    </Card>
+    <Card className={styles.BookDetailsClass}>
+      <CardContent>
+        <Typography
+          gutterBottom
+          variant="h5"
+          component="h2"
+          className={styles.RowDetailsClass}
+        >
+          <span>Book Details</span>
+        </Typography>
+        <Divider />
+        <div className={styles.BookDetailsTitle}>
+          <Typography
+            variant="body2"
+            color="textSecondary"
+            component="p"
+            className={styles.RowDetailsClass}
+          >
+            <PermIdentityOutlinedIcon />
+            <span>Authors:</span>
+            {authors ? authors.join(', ') : 'N/A'}
+          </Typography>
+          <Typography
+            variant="body2"
+            color="textSecondary"
+            component="p"
+            className={styles.RowDetailsClass}
+          >
+            <BookmarkBorderIcon />
+            <span>Publisher:</span>
+            {publisher}
+          </Typography>
+          <Typography
+            variant="body2"
+            color="textSecondary"
+            component="p"
+            className={styles.RowDetailsClass}
+          >
+            <CalendarTodayIcon />
+            <span>PublishedDate:</span>
+            {publishedDate}
+          </Typography>
+          <Typography
+            variant="body2"
+            color="textSecondary"
+            component="p"
+            className={styles.RowDetailsClass}
+          >
+            <FileCopyOutlinedIcon />
+            <span>Pages:</span>
+            {pageCount}
+          </Typography>
+        </div>
+      </CardContent>
+    </Card>
+  </>
 );
 
 BookImageContainer.defaultProps = {
-  title: EMPTY_STRING,
-  description: EMPTY_STRING,
-  subtitle: EMPTY_STRING,
+  image: EMPTY_OBJECT,
+  publishedDate: EMPTY_STRING,
+  publisher: EMPTY_STRING,
+  pageCount: EMPTY_STRING,
+  authors: EMPTY_ARRAY,
+
 };
 
 BookImageContainer.propTypes = {
-  title: PropTypes.string,
-  description: PropTypes.string,
-  subtitle: PropTypes.string,
+  image: PropTypes.shape(),
+  publishedDate: PropTypes.string,
+  publisher: PropTypes.string,
+  pageCount: PropTypes.string,
+  authors: PropTypes.shape(),
 };
 
 export default BookImageContainer;

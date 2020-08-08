@@ -1,6 +1,6 @@
 import React from 'react';
-import Title from '../../../core/TextElements/Title';
-import ParagraphText from '../../../core/TextElements/ParagraphText';
+import Title from '../../../core/components/TextElements/Title';
+import ParagraphText from '../../../core/components/TextElements/ParagraphText';
 import styles from '../../BookDetails/views/TitleSection/HomePageTitleSection.module.scss';
 import { CREATEPAGE_TITLE, CREATEPAGE_TITLE_DESCRIPTION } from '../common/constants';
 

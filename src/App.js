@@ -10,7 +10,7 @@ import NavTitle from './core/components/NavTitle/NavTitle';
 import Footer from './components/Footer/Footer';
 import BookForm from './pages/BookForm/BookForm';
 import Loader from './core/components/Loader/Loader';
-import { uiSelector } from './core/selectors/bookResultSelectors';
+import { uiSelectorLoading } from './core/selectors/bookResultSelectors';
 
 /** *
  * The main app component for Bookstore App
@@ -41,7 +41,7 @@ App.propTypes = {
 };
 
 export const mapStateToProps = (state) => ({
-  loading: uiSelector(state),
+  loading: uiSelectorLoading(state),
 });
 
 export default connect(mapStateToProps)(App);

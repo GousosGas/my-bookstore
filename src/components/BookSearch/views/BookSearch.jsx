@@ -4,14 +4,14 @@ import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
-import CircularProgress from '@material-ui/core/CircularProgress';
 import Icon from '@material-ui/core/Icon';
+import { Link } from 'react-router-dom';
 import SearchField from '../../../core/FormFields/SearchField';
-import { searchedBookResultsAction } from '../actions/BookSearchActions';
+import { clearSearchedBookResultsAction, searchedBookResultsAction } from '../actions/BookSearchActions';
 import styles from './BookSearch.module.scss';
-import SearchCategoryField from '../../../core/FormFields/SearchCategoryField';
-import { uiSelector } from '../../../core/selectors/bookResultSelectors';
+import { uiSelectorLoading, uiSelectorShowFilters } from '../../../core/selectors/bookResultSelectors';
+import validate from '../common/validate';
+import BookAdvancedSearch from './BookAdvancedSearch';
 
 /**
  * Compnenta that renders a redux form
@@ -22,24 +22,48 @@ import { uiSelector } from '../../../core/selectors/bookResultSelectors';
  * @returns {*}
  * @constructor
  */
-const BookSearch = ({ handleSubmit, searchItem, loading }) => (
-  <form onSubmit={handleSubmit(searchItem)}>
-    <Grid container spacing={2}>
-      <Grid item md={10} xs={12}>
-        <Field
-          name="bookSearch"
-          component={SearchField}
-        />
+const BookSearch = ({ handleSubmit, searchItem, showFilter }) => (
+  <div className={styles.BookSearchContainer}>
+    <form onSubmit={handleSubmit(searchItem)}>
+      <Grid container spacing={2}>
+        <Grid item md={9} xs={12}>
+          <Field
+            name="title"
+            label="Title"
+            component={SearchField}
+          />
+        </Grid>
+        <Grid item md={3} xs={12} alignItems="baseline">
+          <BookAdvancedSearch />
+        </Grid>
+        {showFilter
+          ? (
+            <>
+              <Grid item md={4} xs={12}>
+                <Field
+                  name="author"
+                  label="Author"
+                  component={SearchField}
+                />
+              </Grid>
+              <Grid item md={4} xs={12}>
+                <Field
+                  name="publisher"
+                  label="Publisher"
+                  component={SearchField}
+                />
+              </Grid>
+              <Grid item md={4} xs={12}>
+                <Field
+                  name="isbn"
+                  label="ISBN"
+                  component={SearchField}
+                />
+              </Grid>
+            </>
+          ) : null}
       </Grid>
-      <Grid item md={2} xs={12}>
-        <Field
-          name="searchCategory"
-          component={SearchCategoryField}
-        />
-      </Grid>
-    </Grid>
-    <div className={styles.ButtonContainer}>
-      <Box component="div" display="inline">
+      <div className={styles.ButtonContainer}>
         <Button
           type="submit"
           size="large"
@@ -49,50 +73,29 @@ const BookSearch = ({ handleSubmit, searchItem, loading }) => (
         >
           Search a Book
         </Button>
-      </Box>
-      {loading
-        ? (
-          <Box component="div" display="inline">
-            <CircularProgress className={styles.Spinner} />
-          </Box>
-        ) : null}
-    </div>
-    <div className={styles.ButtonContainer}>
-      -OR-
-    </div>
-    <div className={styles.ButtonContainer}>
-      <Button
-        size="large"
-        variant="outlined"
-        endIcon={<Icon>save</Icon>}
-        color="secondary"
-      >
-        Create a Book
-      </Button>
-    </div>
-  </form>
+        <span className={styles.OrClass}>
+          -OR-
+        </span>
+        <Button
+          size="large"
+          variant="outlined"
+          component={Link}
+          to="/create"
+          endIcon={<Icon>save</Icon>}
+          color="secondary"
+        >
+          Create a Book
+        </Button>
+      </div>
+    </form>
+  </div>
+
 );
 
 BookSearch.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   searchItem: PropTypes.shape.isRequired,
-  loading: PropTypes.bool.isRequired,
-};
-
-/**
- * The validate rules
- * of @see BookSearchForm components
- * @param formValues the values of the form
- */
-const validate = (formValues) => {
-  const errors = {};
-  if (!formValues.bookSearch) {
-    errors.bookSearch = 'You must enter an author or publisher ';
-  }
-  if (!formValues.searchCategory) {
-    errors.searchCategory = 'You must select a search filter ';
-  }
-  return errors;
+  showFilter: PropTypes.string.isRequired,
 };
 
 const BookSearchForm = reduxForm({
@@ -102,12 +105,14 @@ const BookSearchForm = reduxForm({
 
 export const mapDispatchToProps = (dispatch) => ({
   searchItem: (formValues) => {
+    dispatch(clearSearchedBookResultsAction());
     dispatch(searchedBookResultsAction(formValues));
   },
 });
 
 export const mapStateToProps = (state) => ({
-  loading: uiSelector(state),
+  loading: uiSelectorLoading(state),
+  showFilter: uiSelectorShowFilters(state),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BookSearchForm);

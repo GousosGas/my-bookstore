@@ -16,14 +16,22 @@ const BookSearchResults = ({ search }) => (
     justify="flex-start"
     alignItems="flex-start"
   >
-    { search.map((book) => (
-      <Grid item xs={12} sm={6} md={3}>
-        <BookCard
-          author={book.author}
-          title={book.title}
-        />
-      </Grid>
-    ))}
+    { search.length > 0 && search.map((book) => {
+      const { id, volumeInfo } = book;
+      return (
+        <Grid item xs={12} sm={6} md={4}>
+          <BookCard
+            id={id}
+            authors={volumeInfo.authors}
+            title={volumeInfo.title}
+            publisher={volumeInfo.publisher}
+            publishedDate={volumeInfo.publishedDate}
+            imageLinks={volumeInfo.imageLinks}
+            rating={volumeInfo.ratingsCount}
+          />
+        </Grid>
+      );
+    })}
   </Grid>
 );
 

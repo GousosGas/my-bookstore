@@ -1,3 +1,13 @@
+@import "../../../../sass/partials/variables";
+
 .TitleSectionClass{
-    padding: 30px 0 30px 0;
+  color: $font-color;
+
+  h4 {
+    padding-bottom: $h4-padding-bottom;
+  }
+
+  p {
+    color: $font-color;
+  }
   }

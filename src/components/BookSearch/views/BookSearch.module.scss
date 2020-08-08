@@ -1,15 +1,21 @@
+@import "../../../sass/partials/variables";
+.BookSearchContainer{
+  padding: $padding-45;
 
-.ButtonContainer{
-  margin: 0 auto;
-  width: fit-content;
-  padding-top: 30px;
+  .ButtonContainer{
+    margin: 0 auto;
+    width: fit-content;
+    padding-top: $padding-45;
 
-  .Spinner{
-    z-index: auto;
-    position: relative;
-    top: 17px;
-    left: 47px;
-  }
+    .OrClass{
+      padding: 0 15px;
+    }
+}
+}
+
+.AdvancedSearchClass{
+  position: relative;
+  top: 10px;
 }
 
 

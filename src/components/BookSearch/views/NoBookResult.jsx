@@ -1,6 +1,6 @@
 import React from 'react';
-import Title from '../../../core/TextElements/Title';
-import styles from './BookSearch.module.scss';
+import Title from '../../../core/components/TextElements/Title';
+import styles from './NoBookResult.module.scss';
 
 /**
  * Component that renders
@@ -10,7 +10,7 @@ import styles from './BookSearch.module.scss';
  * @constructor
  */
 const NoBookResult = () => (
-  <div className={styles.ButtonContainer}>
+  <div className={styles.ContainerClass}>
     <Title align="center" tag="h5" title="No books found" />
   </div>
 );

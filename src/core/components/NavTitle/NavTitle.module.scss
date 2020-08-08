@@ -1,0 +1,14 @@
+@import "../../../sass/partials/variables";
+.MainTitleStyle{
+    color:$font-color;
+    font-family: 'Heebo', sans-serif!important;
+    padding-bottom: $h3-padding-bottom;
+
+}
+
+.IconStyle{
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    top: 33px;
+}

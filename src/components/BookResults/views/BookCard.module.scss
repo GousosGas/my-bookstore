@@ -1,8 +1,15 @@
 .CardRoot{
     max-width: 345px;
-    height: 350px;
 }
 
 .CardMedia{
-    height: 150px
+    height: 200px;
+    background-size: auto!important;
+}
+
+.RatingContainerClass{
+    margin-left: -5px;
+    span{
+        width:18px!important;
+    }
 }

@@ -1,6 +1,17 @@
 .SectionPaddingClass{
-  padding: 20px 0px;
+  padding: 5px 0px;
 }
-.BtnFloatRightClass{
-  float: right;
+.DescriptionContentClass{
+  height: 635px;
+  overflow: auto;
+}
+.AuthorContainerClass{
+  display: flex;
+  align-items: center;
+}
+.RatingContainerClass{
+  margin-left: -13px;
+  span{
+    width:12px!important;
+  }
 }
