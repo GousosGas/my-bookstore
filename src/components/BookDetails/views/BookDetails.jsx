@@ -21,8 +21,8 @@ const BookDetails = ({
   title, description, imageLinks, publishedDate, publisher, pageCount, authors, ratingsCount,
 }) => (
   <>
-    <Grid container spacing={0} className={styles.CardClass}>
-      <Grid item xs={12} md={6}>
+    <Grid container spacing={8} className={styles.CardClass}>
+      <Grid item xs={12} sm={6} md={6}>
         <BookImageContainer
           title={title}
           image={imageLinks}
@@ -32,7 +32,7 @@ const BookDetails = ({
           pageCount={pageCount || 'N/A'}
         />
       </Grid>
-      <Grid item xs={12} md={6}>
+      <Grid item xs={12} sm={6} md={6}>
         <BookDetailsTextSection
           title={title}
           description={description}

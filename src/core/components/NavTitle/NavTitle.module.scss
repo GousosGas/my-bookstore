@@ -1,9 +1,17 @@
 @import "../../../sass/partials/variables";
+@import "../../../sass/mixins/mixins";
 .MainTitleStyle{
     color:$font-color;
     font-family: 'Heebo', sans-serif!important;
     padding-bottom: $h3-padding-bottom;
 
+    @include xs {
+        font-size: 40px!important;
+    }
+
+    @include sm {
+        font-size: 60px!important;
+    }
 }
 
 .IconStyle{

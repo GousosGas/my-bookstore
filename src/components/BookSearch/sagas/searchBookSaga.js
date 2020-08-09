@@ -17,16 +17,20 @@ import {
 export const bodyResolver = (payload) => {
   const emptyList = [];
   if (payload.title) {
-    emptyList.push(`intitle:${payload.title}`);
+    const trimmedTitle = payload.title.trim();
+    emptyList.push(`intitle:${trimmedTitle}`);
   }
   if (payload.author) {
-    emptyList.push(`inauthor:${payload.author}`);
+    const trimmedAuthor = payload.author.trim();
+    emptyList.push(`inauthor:${trimmedAuthor}`);
   }
   if (payload.publisher) {
-    emptyList.push(`inpublisher:${payload.publisher}`);
+    const trimmedPublisher = payload.publisher.trim();
+    emptyList.push(`inpublisher:${trimmedPublisher}`);
   }
   if (payload.isbn) {
-    emptyList.push(`isbn:${payload.isbn}`);
+    const trimmedIsbn = payload.isbn.trim();
+    emptyList.push(`isbn:${trimmedIsbn}`);
   }
   return emptyList.join('+');
 };

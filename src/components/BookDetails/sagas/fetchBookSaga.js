@@ -4,6 +4,7 @@ import {
 } from 'redux-saga/effects';
 import { getBook } from '../../../core/api/bookApi';
 import { setBookResultsAction } from '../actions/actions';
+import {setLoading, setNetworkError} from '../../../core/actions/coreActions';
 
 /**
  * Saga for handling the effects
@@ -13,10 +14,12 @@ import { setBookResultsAction } from '../actions/actions';
  */
 export default function* fetchBookSaga(action) {
   try {
+    yield put(setLoading(true));
+    yield put(setNetworkError(false));
     const { data } = yield call(getBook, action.payload);
     yield put(setBookResultsAction(data.volumeInfo));
-    console.log(data);
+    yield put(setLoading(false));
   } catch (e) {
-    console.log(e);
+    yield put(setNetworkError(true));
   }
 }
