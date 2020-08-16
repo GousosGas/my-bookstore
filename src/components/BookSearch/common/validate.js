@@ -5,8 +5,8 @@
  */
 const validate = (formValues) => {
   const errors = {};
-  if (!formValues.title) {
-    errors.title = 'You must enter a book search ';
+  if (!formValues.search) {
+    errors.search = 'You must enter a book search ';
   }
   return errors;
 };

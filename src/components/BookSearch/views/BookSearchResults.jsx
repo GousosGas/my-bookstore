@@ -2,6 +2,7 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import * as PropTypes from 'prop-types';
 import BookCard from '../../BookResults/views/BookCard';
+import styles from './BookSearchResults.module.scss';
 
 /**
  * Component that renders
@@ -15,6 +16,7 @@ const BookSearchResults = ({ search }) => (
     direction="row"
     justify="flex-start"
     alignItems="flex-start"
+    className={styles.BookResultContainer}
   >
     { search.length > 0 && search.map((book) => {
       const { id, volumeInfo } = book;

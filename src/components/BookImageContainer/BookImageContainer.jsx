@@ -26,7 +26,7 @@ const BookImageContainer = ({
   publishedDate, publisher, pageCount, image, authors,
 }) => (
   <>
-    <Card >
+    <Card>
       <CardMedia
         className={styles.MediaClass}
         image={image.small}

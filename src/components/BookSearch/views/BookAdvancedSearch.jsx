@@ -1,34 +1,51 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import styles from './BookSearch.module.scss';
-import { uiStateShowAdvancedFilters } from '../actions/BookSearchActions';
+import { Field } from 'redux-form';
+import Grid from '@material-ui/core/Grid';
+import styles from './BookAdvancedSearch.module.scss';
+import SearchField from '../../../core/FormFields/SearchField';
 
 /**
- * Button that render the search filter
- * fields
+ * Compnenta that renders a redux form
+ * used for Advanced Search functionality in the list of the books
+ * @param handleSubmit submit function
+ * @param searchItem helper submit function
+ * @param loading indicator that handles the loading icon
  * @returns {*}
  * @constructor
  */
-const BookAdvancedSearch = ({ onShow }) => (
-  <Button
-    onClick={onShow}
-    color="primary"
-    className={styles.AdvancedSearchClass}
-  >
-    Advanced Search
-  </Button>
+const BookAdvancedSearch = () => (
+  <div className={styles.BookAdvancedSearchContainer}>
+    <Grid container spacing={1} alignItems="baseline">
+      <Grid item md={3} xs={12}>
+        <Field
+          name="title"
+          label="Title"
+          component={SearchField}
+        />
+      </Grid>
+      <Grid item md={3} xs={12}>
+        <Field
+          name="author"
+          label="Author"
+          component={SearchField}
+        />
+      </Grid>
+      <Grid item md={3} xs={12}>
+        <Field
+          name="publisher"
+          label="Publisher"
+          component={SearchField}
+        />
+      </Grid>
+      <Grid item md={3} xs={12}>
+        <Field
+          name="isbn"
+          label="ISBN"
+          component={SearchField}
+        />
+      </Grid>
+    </Grid>
+  </div>
 );
 
-BookAdvancedSearch.propTypes = {
-  onShow: PropTypes.func.isRequired,
-};
-
-const mapDispatchToProps = (dispatch) => ({
-  onShow: () => {
-    dispatch(uiStateShowAdvancedFilters());
-  },
-});
-
-export default connect(null, mapDispatchToProps)(BookAdvancedSearch);
+export default BookAdvancedSearch;

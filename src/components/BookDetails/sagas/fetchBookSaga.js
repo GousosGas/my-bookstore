@@ -4,7 +4,7 @@ import {
 } from 'redux-saga/effects';
 import { getBook } from '../../../core/api/bookApi';
 import { setBookResultsAction } from '../actions/actions';
-import {setLoading, setNetworkError} from '../../../core/actions/coreActions';
+import { setLoading, setNetworkError } from '../../../core/actions/coreActions';
 
 /**
  * Saga for handling the effects

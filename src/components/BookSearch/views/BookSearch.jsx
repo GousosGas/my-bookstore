@@ -11,7 +11,8 @@ import { clearSearchedBookResultsAction, searchedBookResultsAction } from '../ac
 import styles from './BookSearch.module.scss';
 import { uiSelectorLoading, uiSelectorShowFilters } from '../../../core/selectors/bookResultSelectors';
 import validate from '../common/validate';
-import BookAdvancedSearch from './BookAdvancedSearch';
+import BookAdvancedSearchBtn from './BookAdvancedSearchBtn';
+import BookAdvancedSearcForm from './BookAdvancedSearch';
 
 /**
  * Compnenta that renders a redux form
@@ -28,40 +29,16 @@ const BookSearch = ({ handleSubmit, searchItem, showFilter }) => (
       <Grid container spacing={2}>
         <Grid item md={9} xs={12}>
           <Field
-            name="title"
-            label="Title"
+            name="search"
+            label="Search"
             component={SearchField}
           />
         </Grid>
         <Grid item md={3} xs={12} alignItems="baseline">
-          <BookAdvancedSearch />
+          <BookAdvancedSearchBtn />
         </Grid>
         {showFilter
-          ? (
-            <>
-              <Grid item md={4} xs={12}>
-                <Field
-                  name="author"
-                  label="Author"
-                  component={SearchField}
-                />
-              </Grid>
-              <Grid item md={4} xs={12}>
-                <Field
-                  name="publisher"
-                  label="Publisher"
-                  component={SearchField}
-                />
-              </Grid>
-              <Grid item md={4} xs={12}>
-                <Field
-                  name="isbn"
-                  label="ISBN"
-                  component={SearchField}
-                />
-              </Grid>
-            </>
-          ) : null}
+          ? <BookAdvancedSearcForm /> : null}
       </Grid>
       <div className={styles.ButtonContainer}>
         <Button
@@ -72,19 +49,6 @@ const BookSearch = ({ handleSubmit, searchItem, showFilter }) => (
           color="primary"
         >
           Search a Book
-        </Button>
-        <span className={styles.OrClass}>
-          -OR-
-        </span>
-        <Button
-          size="large"
-          variant="outlined"
-          component={Link}
-          to="/create"
-          endIcon={<Icon>save</Icon>}
-          color="secondary"
-        >
-          Create a Book
         </Button>
       </div>
     </form>

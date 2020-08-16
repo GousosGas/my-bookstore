@@ -16,9 +16,9 @@ import {
  */
 export const bodyResolver = (payload) => {
   const emptyList = [];
-  if (payload.title) {
-    const trimmedTitle = payload.title.trim();
-    emptyList.push(`intitle:${trimmedTitle}`);
+  if (payload.search) {
+    const trimmedTitle = payload.search.trim();
+    emptyList.push(trimmedTitle);
   }
   if (payload.author) {
     const trimmedAuthor = payload.author.trim();
