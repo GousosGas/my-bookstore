@@ -5,7 +5,6 @@ import { Field, reduxForm } from 'redux-form';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Icon from '@material-ui/core/Icon';
-import { Link } from 'react-router-dom';
 import SearchField from '../../../core/FormFields/SearchField';
 import { clearSearchedBookResultsAction, searchedBookResultsAction } from '../actions/BookSearchActions';
 import styles from './BookSearch.module.scss';
@@ -43,8 +42,8 @@ const BookSearch = ({ handleSubmit, searchItem, showFilter }) => (
       <div className={styles.ButtonContainer}>
         <Button
           type="submit"
+          variant="contained"
           size="large"
-          variant="outlined"
           endIcon={<Icon>send</Icon>}
           color="primary"
         >

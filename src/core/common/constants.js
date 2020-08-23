@@ -1,3 +1,4 @@
+import { Map } from 'immutable';
 /**
  * Constants used to create actions
  * @type {string}
@@ -12,6 +13,7 @@ export const LOADING = 'loading';
 export const RESULT_FOUND = 'resultsFound';
 export const ERROR = 'error';
 export const SHOW_FILTERS = 'showFilters';
+export const BOOK = 'book';
 
 /**
  * Core hepler constants
@@ -20,6 +22,7 @@ export const SHOW_FILTERS = 'showFilters';
 export const EMPTY_STRING = '';
 export const EMPTY_OBJECT = {};
 export const EMPTY_ARRAY = [];
+export const EMPTY_MAP = new Map();
 
 /**
  * Consts that describes filters

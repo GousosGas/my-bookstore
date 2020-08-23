@@ -4,7 +4,6 @@ import { BOOK_RESULT } from '../../components/BookDetails/consts/constants';
  * Selectors hanlde slices of the redux state
  * @param state
  */
-export const booksSelector = (state) => state.books;
 export const searchSelector = (state) => state.search;
 export const resultsFoundSelector = (state) => state.uiState;
 export const uiSelectorLoading = (state) => state.uiState.getIn([LOADING]);

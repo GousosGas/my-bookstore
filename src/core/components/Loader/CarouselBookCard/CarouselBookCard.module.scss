@@ -1,0 +1,14 @@
+@import "../../../../sass/partials/variables";
+.EditorsImgSelectionContainer{
+  height: 55vh;
+}
+
+.BuyBtns{
+  margin: 0 auto!important;
+  span{
+    color: $button-color!important;
+  }
+  span:hover{
+    color: $button-color-hover!important;
+  }
+}

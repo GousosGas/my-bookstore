@@ -13,6 +13,7 @@ import BookForm from './pages/BookForm/BookForm';
 import Loader from './core/components/Loader/Loader';
 import { uiSelectorLoading } from './core/selectors/bookResultSelectors';
 import NoPagePage from './core/components/404/NoPageFound';
+import WelcomePage from './pages/WelcomePage/WelcomePage';
 
 /** *
  * The main app component for Bookstore App
@@ -32,7 +33,8 @@ const App = ({ loading }) => (
       <NavTitle tag="h3" title="myBookStore" align="center" />
     </AppBar>
     <Switch>
-      <Route exact path="/" component={HomePage} />
+      <Route exact path="/" component={WelcomePage} />
+      <Route exact path="/search" component={HomePage} />
       <Route exact path="/create" component={BookForm} />
       <Route exact path="/book/:id" component={BookPage} />
       <Route component={NoPagePage} />
