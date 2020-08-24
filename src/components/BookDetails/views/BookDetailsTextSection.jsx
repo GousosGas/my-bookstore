@@ -1,10 +1,11 @@
 import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
 import React from 'react';
 import PropTypes from 'prop-types';
-import Title from '../../../core/TextElements/Title';
-import SmallIconBtn from '../../../core/Buttons/SmallIconBtn';
-import BookDetailsInfo from './BookDetailsInfo';
+import ReactHtmlParser from 'react-html-parser';
+import Divider from '@material-ui/core/Divider';
+import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined';
+import Rating from '@material-ui/lab/Rating';
+import Title from '../../../core/components/TextElements/Title';
 import { EMPTY_STRING } from '../../../core/common/constants';
 import styles from './BookDetailsTextSection.module.scss';
 
@@ -16,7 +17,9 @@ import styles from './BookDetailsTextSection.module.scss';
  * @returns {*}
  * @constructor
  */
-const BookDetailsTextSection = ({ title, description }) => (
+const BookDetailsTextSection = ({
+  title, description, authors, ratingsCount,
+}) => (
   <>
     <Title
       tag="h5"
@@ -25,30 +28,33 @@ const BookDetailsTextSection = ({ title, description }) => (
       className={styles.SectionPaddingClass}
     />
     <Typography
-      variant="body2"
       color="textSecondary"
-      component="p"
+      component="h3"
       className={styles.SectionPaddingClass}
     >
-      {description}
+      <div className={styles.AuthorContainerClass}>
+        <PermIdentityOutlinedIcon />
+        <span>{authors ? authors.join(', ') : 'N/A'}</span>
+      </div>
     </Typography>
-    <div className={styles.SectionPaddingClass}>
-      <SmallIconBtn
-        color="secondary"
-        icon="favorite"
-        buttonName="Favorite"
-      />
-      <SmallIconBtn
-        className={styles.BtnFloatRightClass}
-        color="primary"
-        icon="share"
-        buttonName="Share"
+    <div className={styles.RatingContainerClass}>
+      <Rating
+        name="read-only"
+        value={ratingsCount || 0}
+        size="small"
+        readOnly
       />
     </div>
-    <p />
     <Divider />
-    <div>
-      <BookDetailsInfo />
+    <div className={styles.DescriptionContentClass}>
+      <Typography
+        variant="body2"
+        color="textSecondary"
+        component="p"
+        className={styles.SectionPaddingClass}
+      >
+        {description ? ReactHtmlParser(description) : 'No description is provided'}
+      </Typography>
     </div>
   </>
 );
@@ -56,11 +62,15 @@ const BookDetailsTextSection = ({ title, description }) => (
 BookDetailsTextSection.defaultProps = {
   title: EMPTY_STRING,
   description: EMPTY_STRING,
+  authors: EMPTY_STRING,
+  ratingsCount: 0,
 };
 
 BookDetailsTextSection.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
+  authors: PropTypes.string,
+  ratingsCount: PropTypes.number,
 };
 
 export default BookDetailsTextSection;

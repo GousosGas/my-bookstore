@@ -1,55 +1,25 @@
 import React from 'react';
 import Container from '@material-ui/core/Container';
-import Divider from '@material-ui/core/Divider';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import HomePageTitleSection from '../../components/BookDetails/views/TitleSection/HomePageTitleSection';
+import ScrollToTop from 'react-scroll-up';
+import ExpandLessOutlinedIcon from '@material-ui/icons/ExpandLessOutlined';
 import BookSearch from '../../components/BookSearch/views/BookSearch';
-import BookResults from '../../components/BookResults/views/BookResults';
 import styles from './HomePage.module.scss';
-import BookSearchResults from '../../components/BookSearch/views/BookSearchResults';
-import { booksSelector, resultsFoundSelector, searchSelector } from '../../core/selectors/bookResultSelectors';
-import { EMPTY_ARRAY, EMPTY_OBJECT } from '../../core/common/constants';
-import NoBookResult from '../../components/BookSearch/views/NoBookResult';
+import BookResultContainer from '../../components/BookResults/views/BookResultContainer';
 
 /**
  * Component responsible to render
  * the Homepage
- * @param books the list of books
- * @param search the result of a search query
- * @param found indicator if the searched book found
- * @returns {*}
- * @constructor
  */
-const HomePage = ({ books, search, found }) => (
+const HomePage = () => (
   <>
-    <Container maxWidth="md">
-      <HomePageTitleSection />
+    <Container maxWidth="md" className={styles.SectionPadding}>
       <BookSearch />
-      {found.get('resultsFound') === false ? <NoBookResult /> : null}
-      <Divider className={styles.DividerClass} />
-      {search.length > 0
-        ? <BookSearchResults search={search} />
-        : <BookResults books={books} />}
+      <BookResultContainer />
+      <ScrollToTop showUnder={160} style={{ bottom: '100px' }}>
+        <ExpandLessOutlinedIcon fontSize="large" />
+      </ScrollToTop>
     </Container>
   </>
 );
 
-HomePage.defaultProps = {
-  books: EMPTY_ARRAY,
-  search: EMPTY_ARRAY,
-  found: EMPTY_OBJECT,
-};
-
-HomePage.propTypes = {
-  books: PropTypes.shape(),
-  search: PropTypes.shape(),
-  found: PropTypes.shape(),
-};
-
-const mapStateToProps = (state) => ({
-  books: booksSelector(state),
-  search: searchSelector(state),
-  found: resultsFoundSelector(state),
-});
-export default connect(mapStateToProps)(HomePage);
+export default HomePage;

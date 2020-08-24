@@ -1,0 +1,23 @@
+@import "../../sass/partials/variables";
+
+.BookSearchRefContainer{
+  background-color: #000000;
+  text-align: center;
+  -webkit-box-shadow: 2px 7px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 2px 7px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 2px 7px 5px 0px rgba(0,0,0,0.75);
+}
+
+.BookSearchElem{
+  padding: 60px;
+  color: $font-color;
+
+  button{
+    margin-top: 20px;
+    background-color: $button-color;
+  }
+  button:hover{
+    margin-top: 20px;
+    background-color: $button-color-hover;
+  }
+}

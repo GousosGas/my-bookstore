@@ -5,7 +5,8 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import Typography from '@material-ui/core/Typography';
 import styles from './SearchCategoryField.module.scss';
-import { EMPTY_STRING } from '../common/constants';
+import { BOOK_FILTER, EMPTY_STRING } from '../common/constants';
+import capitalizeFirstLetter from '../common/utils';
 
 /**
  * Component that renders a category filter
@@ -25,15 +26,16 @@ const SearchCategoryField = ({ input, meta }) => (
         displayEmpty
         onChange={input.onChange}
       >
-        <MenuItem value="" disabled>
-          Filter
-        </MenuItem>
-        <MenuItem value="author">Author</MenuItem>
-        <MenuItem value="publisher">Published</MenuItem>
+        <MenuItem value="">Filter</MenuItem>
+        {
+          BOOK_FILTER.map((filter) => (
+            <MenuItem key={filter} value={filter}>{capitalizeFirstLetter(filter)}</MenuItem>
+          ))
+        }
       </Select>
     </FormControl>
     {meta.touched && meta.error
-      ? <Typography color="secondary">{meta.error}</Typography> : null}
+      ? <Typography variant="caption" display="block" gutterBottom color="secondary">{meta.error}</Typography> : null}
   </>
 );
 

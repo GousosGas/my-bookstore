@@ -1,32 +1,10 @@
 import {
+  call,
   put,
-  select,
 } from 'redux-saga/effects';
-import { booksSelector } from '../../../core/selectors/bookResultSelectors';
+import { getBook } from '../../../core/api/bookApi';
 import { setBookResultsAction } from '../actions/actions';
-
-/**
- * Helper function that resolves and "clear"
- * the provided array from null values
- * @param searchBookResult array of books
- * @returns {*}
- */
-const searchResultResolver = (searchBookResult) => searchBookResult.filter((book) => book != null);
-
-/**
- * Helper function for filtering a book
- * It receives a list of books
- * and it finds the selected one
- * @param books list of book
- * @param payload the selected book
- * @returns {*}
- */
-const filterBook = (books, payload) => {
-  const result = books && books.map((book) => (
-    Object.values(book).includes(payload) ? book : null
-  ));
-  return result;
-};
+import { setLoading, setNetworkError } from '../../../core/actions/coreActions';
 
 /**
  * Saga for handling the effects
@@ -36,11 +14,12 @@ const filterBook = (books, payload) => {
  */
 export default function* fetchBookSaga(action) {
   try {
-    const books = yield select(booksSelector);
-    const bookResult = filterBook(books, action.payload);
-    const book = searchResultResolver(bookResult);
-    yield put(setBookResultsAction(book[0]));
+    yield put(setLoading(true));
+    yield put(setNetworkError(false));
+    const { data } = yield call(getBook, action.payload);
+    yield put(setBookResultsAction(data.volumeInfo));
+    yield put(setLoading(false));
   } catch (e) {
-    console.log(e);
+    yield put(setNetworkError(true));
   }
 }

@@ -17,21 +17,27 @@ import BookDetailsTextSection from './BookDetailsTextSection';
  * @returns {*}
  * @constructor
  */
-const BookDetails = ({ title, description, subtitle }) => (
+const BookDetails = ({
+  title, description, imageLinks, publishedDate, publisher, pageCount, authors, ratingsCount,
+}) => (
   <>
-    <Grid container spacing={0} className={styles.CardClass}>
-      <Grid item xs={12} md={6}>
+    <Grid container spacing={8} className={styles.CardClass}>
+      <Grid item xs={12} sm={6} md={6}>
         <BookImageContainer
           title={title}
-          description={description}
-          subtitle={subtitle}
+          image={imageLinks}
+          authors={authors}
+          publishedDate={publishedDate || 'N/A'}
+          publisher={publisher || 'N/A'}
+          pageCount={pageCount || 'N/A'}
         />
       </Grid>
-      <Grid item xs={12} md={6}>
+      <Grid item xs={12} sm={6} md={6}>
         <BookDetailsTextSection
           title={title}
           description={description}
-          subtitle={subtitle}
+          authors={authors}
+          ratingsCount={ratingsCount}
         />
       </Grid>
     </Grid>
@@ -41,13 +47,23 @@ const BookDetails = ({ title, description, subtitle }) => (
 BookDetails.defaultProps = {
   title: EMPTY_STRING,
   description: EMPTY_STRING,
-  subtitle: EMPTY_STRING,
+  imageLinks: EMPTY_STRING,
+  publishedDate: EMPTY_STRING,
+  publisher: EMPTY_STRING,
+  pageCount: EMPTY_STRING,
+  authors: EMPTY_STRING,
+  ratingsCount: 0,
 };
 
 BookDetails.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
-  subtitle: PropTypes.string,
+  imageLinks: PropTypes.string,
+  publishedDate: PropTypes.string,
+  publisher: PropTypes.string,
+  pageCount: PropTypes.string,
+  authors: PropTypes.string,
+  ratingsCount: PropTypes.number,
 };
 
 export default BookDetails;

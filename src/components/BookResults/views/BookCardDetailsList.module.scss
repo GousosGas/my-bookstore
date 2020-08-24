@@ -1,0 +1,19 @@
+@import '../../../sass/partials/variables';
+.RowContainer{
+    padding-top: $row-element-padding-top;
+}
+.IconRowClass{
+    display: flex;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.54);
+
+    span{
+        padding-left: 5px;
+    }
+}
+
+.RowDetailsClass{
+    display: flex;
+    align-items: center;
+}
+

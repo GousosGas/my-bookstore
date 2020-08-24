@@ -1,7 +1,24 @@
-.Root{
-    max-width: 345px
-  }
-.Media{
-    height: 0;
+@import "../../sass/partials/variables";
+@import "../../sass/mixins/mixins";
+
+.MediaClass{
+    height: 263px!important;
     padding-top: 56.25%;
+    background-size: contain!important;
   }
+.BookDetailsClass{
+  margin-top: 20px;
+}
+.BookDetailsTitle{
+  margin-top: 6px;
+}
+
+.RowDetailsClass{
+  padding: $element-padding-top-bottom!important;
+  display: flex;
+  align-items: center;
+}
+
+span{
+  margin-right: 5px;
+}

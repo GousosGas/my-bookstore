@@ -1,15 +1,41 @@
+@import "../../../sass/partials/variables";
+@import "../../../sass/mixins/mixins";
+.BookSearchContainer{
+  padding: $padding-45;
 
-.ButtonContainer{
-  margin: 0 auto;
-  width: fit-content;
-  padding-top: 30px;
-
-  .Spinner{
-    z-index: auto;
-    position: relative;
-    top: 17px;
-    left: 47px;
-  }
+  .ButtonContainer{
+    margin: 0 auto;
+    width: fit-content;
+    padding-top: $padding-45;
+    button {
+      background-color: $button-color;
+    }
+    button:hover {
+      background-color: $button-color-hover;
+    }
 }
 
+}
+
+.AdvancedSearchClass{
+  position: relative;
+  top: 10px;
+}
+
+.OrClass{
+  padding: 0 15px;
+
+@include xs{
+  padding: 10px 15px;
+  display: block;
+  text-align: center;
+}
+
+  @include md{
+  padding: 0 15px;
+  display: unset;
+  text-align: unset;
+}
+
+}
 

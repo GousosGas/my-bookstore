@@ -1,0 +1,17 @@
+@import "../../../sass/partials/variables";
+
+a {
+  text-decoration:none !important;
+}
+.BtnContainer {
+  margin: 0 auto!important;
+
+  button{
+    background-color: $button-color;
+  }
+
+  button:hover{
+    background-color: $button-color-hover;
+  }
+
+}
