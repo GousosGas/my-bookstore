@@ -15,7 +15,7 @@
     "history": "^5.0.0",
     "immutable": "^4.0.0-rc.12",
     "material-ui-breadcrumbs": "^0.1.6",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "prop-types": "latest",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
